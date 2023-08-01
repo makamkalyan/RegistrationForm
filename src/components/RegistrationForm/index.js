@@ -34,12 +34,14 @@ class RegistrationForm extends Component {
 
   submitCredentials = event => {
     event.preventDefault()
-    const {lastBoolean, firstBoolean} = this.state
+    const {lastName, firstName} = this.state
 
-    if (lastBoolean || firstBoolean) {
-      this.setState({isSubmit: false})
-    } else if (lastBoolean === true && firstBoolean === true) {
-      this.setState({isSubmit: false})
+    if (lastName.length === 0 && firstName.length === 0) {
+      this.setState({isSubmit: false, lastBoolean: true, firstBoolean: true})
+    } else if (firstName.length === 0) {
+      this.setState({isSubmit: false, firstBoolean: true})
+    } else if (lastName.length === 0) {
+      this.setState({isSubmit: false, lastBoolean: true})
     } else {
       this.setState({isSubmit: true})
     }
